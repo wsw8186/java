@@ -1,0 +1,14 @@
+----------------
+03일차 Persistance Layer
+----------------
+- ConnectionPool 만들기
+
+- ConnectionPool Lib(HikariCP) 사용하기
+
+----------------
+03일차 Business Layer
+----------------
+- 서비스 함수별 Transaction 처리
+	- Connection Pool 에 분산 Tx 처리(O) - 설명 필요
+	- HikariCP Pool 에 분산 Tx 처리(X)
+ 

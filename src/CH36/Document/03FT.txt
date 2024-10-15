@@ -1,0 +1,54 @@
+C:.
+│  Application.java
+│  Application.properties
+│
+├─Controller
+│      BookController.java
+│      FrontController.java
+│      SubController.java
+│      UserController.java
+│
+├─Dependencies
+│      HikariCP-6.0.0.jar
+│      mysql-connector-j-9.0.0.jar
+│
+├─Document
+│      01 INIT.drawio
+│      01.txt
+│      01FT.txt
+│      02.txt
+│      03.txt
+│      03FT.txt
+│      bookDB.sql
+│      ERROR_NOTE.txt
+│
+├─Domain
+│  └─Common
+│      ├─Dao
+│      │  │  BookDaoImpl.java
+│      │  │  UserDaoImpl.java
+│      │  │
+│      │  └─ConnectionPool
+│      │          ConnectionItem.java
+│      │          ConnectionPool.java
+│      │          ConnectionPoolByHikari.java
+│      │
+│      ├─Dto
+│      │      BookDto.java
+│      │      UserDto.java
+│      │
+│      └─Service
+│              BookServiceImpl.java
+│              UserServiceImpl.java
+│
+├─Properties
+│      CommonProperties.java
+│
+├─Test
+│      ControllerTests.java
+│      DaoTests.java
+│      ServiceTests.java
+│
+└─View
+        GUIViewer.java
+        TUIVIewer.java

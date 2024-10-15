@@ -1,0 +1,85 @@
+----------------
+02일차
+----------------
+SampleBook.csv
+- https://www.data.go.kr/tcs/dss/selectDataSetList.do?dType=TOTAL&keyword=%EB%8C%80%EA%B5%AC+%EB%8F%84%EC%84%9C%EA%B4%80&operator=AND&detailKeyword=&publicDataPk=&recmSe=N&detailText=&relatedKeyword=&commaNotInData=&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=&relRadio=&orgFullName=&orgFilter=&org=&orgSearch=&currentPage=1&perPage=10&brm=&instt=&svcType=&kwrdArray=&extsn=CSV&coreDataNmArray=&pblonsipScopeCode=
+- 대구광역시_공공도서관 단행자료현황 다운로드
+
+
+----------------
+Persistence Layer
+----------------
+- BookDto
+	- private long bookCode;
+	- private String bookName;
+	- private String publisher;
+	- private String isbn;
+	//디폴트생성자
+	//모든인자 생성자
+	//getter and setter
+	//toString 재정의
+
+- BookDaoImpl
+	- 싱글톤 패턴
+	- CRUD
+		- select 다건 / 단건
+		- insert/update/delete
+		
+
+----------------
+Presentation Layer
+----------------
+FrontController
+	init() : 요청ENDPOINT : SUBCONTROLLER() 객체 저장
+	execute()
+		- 사용자로부터 요청사항을 처리해주는 함수
+		- Map<String,Object> params 로 사용자 요청사항 전달 받음
+		- Map<String,Object> 리턴형으로 결과값 전달
+
+SubController(Interface)
+	- 서비스별 요청사항에 대한 처리를 할수있는 서브Controller들을 묶는 상위 인터페이스
+	- BookController	도서 관련서비스를 처리할 용도의 컨트롤러 
+	- UserController	유저 관련서비스를 처리할 용도의 컨트롤러
+	
+	
+
+----------------
+FLOW 
+----------------
+1 Persistence Layer
+	- BookDaoImpl
+		- Singleton Pattern(단일객체)
+		- DB연결 위한 기본속성
+		- CRUD 함수 작성 
+	- BookDaoTests
+		- CRUD Tests 
+		
+2 Presentation Layer
+	- FrontController
+		- map("endPoint", SubController객체)
+		- init() - SubController객체 초기화
+		- execute() - view로부터의 내용받아서 SubControleller실행
+	- SubController(Interface)
+		- execute() - 하위컨트롤러가 재정의하도록 유도
+	- BookController
+		- execute()
+			- 1 파라미터 받기
+			- 2 유효성 체크
+			- 3 서비스 실행
+			- 4 뷰로이동/내용전달
+		
+3 Business Layer(Tx처리/Business유효성검사..)
+	- BookServiceImpl
+		- SingleTon pattern(단일 객체)
+		- BookDaoImpl을 연결
+		- Service 함수 작업
+		
+
+View -> FC -> SC -> Service -> Dao -> Table
+	 <-    <-    <-         <-     <-
+	 
+
+
+
+
+

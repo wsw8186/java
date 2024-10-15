@@ -1,0 +1,20 @@
+----------------
+01일차
+----------------
+- 파일구조 / 각파일폴더 설명 / 01 draw.io 확인
+
+[파일구조]
+
+Controller	: View 로 전달되는 요구사항 처리
+View		: 사용자 UI
+Domain		: 유스케이스 Actor별 기능 model 정의
+	Common	: 공통관심사(Dao,Dto,Service)
+		Dao		: Data Access Object , 테이블 CRUD
+		Dto		: Data Transfer Object , 저장단위 
+		Service : 비즈니스 로직_중요!
+	User(x)	: 회원전용
+	Member(x) : 사서전용
+	Admin(x)	:관리자 전용
+
+Dependencies : 의존 처리 폴더(lib)
+Properties 	 : 전역 설정 파일(application.properties)
