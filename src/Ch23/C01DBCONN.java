@@ -25,7 +25,7 @@ public class C01DBCONN {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver Loading Sucess...");
 			conn = DriverManager.getConnection(url,id,pw);
-			System.out.println("DB CONNECTED...");
+			System.out.println("DB CONNECTED1...");
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {

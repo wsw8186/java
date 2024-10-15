@@ -1,12 +1,11 @@
 package CH36.View.TUI;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import CH36.Controller.FrontController;
-import CH36.Domain.Common.Dto.BookDto;
+import CH36.Domain.Common.Dto.UserDto;
 
 public class TUI {
 
@@ -62,8 +61,22 @@ public class TUI {
 		//로그인 요청
 		Map<String,Object> params = new HashMap();
 		params.put("endPoint", "/user");
-		controller.execute(null);
-		
+		params.put("serviceNo", 6);
+		params.put("userDto", new UserDto(id,pw,"",false));
+		params.put("sessionId",sessionId);
+		Map<String,Object> response = controller.execute(params);
+//		for(String key : response.keySet()) {
+//			System.out.println(key + " : " +response.get(key));
+//		}
+		this.sessionId = (Integer)response.get("sessionId");
+		this.role = (String)response.get("role");
+		if("ROLE_USER".equals(this.role)) {
+			//회원계정 로그인
+			회원Menu();
+		}else if("ROLE_MEMBER".equals(this.role)) {
+			//사서계정 로그인
+			사서Menu();
+		}
 	}
 
 	public void 사서Menu() {
