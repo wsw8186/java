@@ -12,17 +12,17 @@ public class 문제1 {
 	private static List<String> wordList =new ArrayList<String>();
 	
 	public static void sort(boolean isAsend) {
-		  if (isAsend) {
-	            Collections.sort(wordList);
-	        } else {
-	            Collections.sort(wordList, Collections.reverseOrder());
+		  if (isAsend) { //isAsend가 true일 경우
+	            Collections.sort(wordList); // 리스트 정렬(오름차순 정렬)
+	        } else { //isAsend가 false일 경우
+	            Collections.sort(wordList, Collections.reverseOrder()); // 내림차순 정렬
 	        }
 	}
 	public static void add(String word) {
-		wordList.add(word);
+		wordList.add(word); // 입력된 단어를 리스트에 추가
 	}
 	public static void show() {
-		wordList.forEach(item -> System.out.println(item));
+		wordList.forEach(item -> System.out.println(item));  // 리스트의 각 항목을 출력
 	}
 	
 
